@@ -1,4 +1,4 @@
-package com.codingninja;
+package codingninja.algo;
 
 
 import java.util.Scanner;

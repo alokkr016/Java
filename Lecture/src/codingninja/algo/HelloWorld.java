@@ -1,4 +1,4 @@
-package com.codingninja;
+package codingninja.algo;
 
 public class HelloWorld {
     public static void main(String[] args) {
