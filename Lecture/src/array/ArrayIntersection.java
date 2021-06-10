@@ -4,15 +4,40 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class ArrayIntersection {
+//    public static boolean elementCheck(int [] myArray,int n){
+//        boolean cheak = false;
+//        for(int i = 0;i < myArray.length;i++){
+//            if(myArray[i] == n){
+//                cheak = true;
+//                break;
+//            }
+//        }
+//        return cheak;
+//    }
     public static void intersections(int arr1[], int arr2[]) {
         //Your code goes here
-
+        int myarr[] = new int[arr1.length];
+        int k = 0;
+        for (int i = 0; i < arr1.length; i++) {
+            for (int j = 0; j < arr2.length; j++) {
+                if (arr2[j] == arr1[i]) {
+                    myarr[k] = arr2[j];
+                    arr2[j] = Integer.MAX_VALUE;
+                    k++;
+                    break;
+                }
+            }
+        }
+        for (int i = 0; i < myarr.length; i++) {
+            if (myarr[i] != 0) {
+                System.out.print(myarr[i] + " ");
+            }
+        }
     }
-
 }
 
 
-public class Runner6 {
+ class Runner6 {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
