@@ -3,24 +3,59 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 public class SpiralPrint {
-    public static void spiralPrint(int matrix[][]){
+    public static void spiralPrint(int matrix[][]) {
         //Your code goes here
         int rows = matrix.length;
+        if(rows==0){
+            return;
+        }
         int columns = matrix[0].length;
-        int row_start = 0;
-        int col_start = 0;
-        int row_end = rows;
-        int col_end = columns;
-        int element_colunt = rows*columns;
-        while(element_colunt != element_colunt){
-            for(int i = row_start; i  < row_end; i++){
-                for(int j = col_end - 1;j >= col_start;j--){
-
+        int left = 0;
+        int right = columns - 1;
+        int top = 0;
+        int bottom = rows - 1;
+        int total_element = rows*columns;
+        while(total_element > 0){
+            for(int i = top; i <= top; i++){
+                for(int j = left; j <= right;j++){
+                    System.out.print(matrix[i][j] + " ");
+                    total_element--;
                 }
             }
+            top++;
+
+            for(int j = right;j <=right ;j++){ //3
+
+                for(int k = top;k <= bottom;k++){
+
+                    System.out.print(matrix[k][j] +" ");
+                    total_element--;
+                }
+            }
+            right--;
+
+            for(int i = bottom;i <= bottom;i++){
+                for(int j = right;j >= left;j--){
+                    System.out.print(matrix[i][j] + " ");
+                    total_element--;
+                }
+            }
+            bottom--;
+
+            for(int i = left; i <= left; i++){ //0 <= 0
+                for(int j = bottom;j >= top;j--){
+
+                    System.out.print(matrix[j][i]+ " ");
+                    total_element--;
+                }
+            }
+            left++;
+
         }
+
     }
 }
+
 
  class Runner8 {
 
