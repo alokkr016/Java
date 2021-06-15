@@ -3,17 +3,17 @@ package stringAnd2Darray;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-public class RemoveConsecutiveDuplicates {
-    public static String removeConsecutiveDuplicates(String str) {
-        //Your code goes here
+
+public class RemoveCharacter {
+
+    public static String removeAllOccurrencesOfChar(String str, char ch) {
+        // Your code goes
         String newStr = "";
-        for(int i = 0;i < str.length() - 1;i++){ // 7
-            if(str.charAt(i) != str.charAt(i + 1)){
+        for(int i = 0;i < str.length();i++ ){
+            if(str.charAt(i) != ch){
                 newStr += str.charAt(i);
             }
-
         }
-        newStr += str.charAt(str.length() - 1);
         return newStr;
     }
 
@@ -21,7 +21,7 @@ public class RemoveConsecutiveDuplicates {
 
 
 
- class Runner10 {
+ class Runner13 {
 
     static BufferedReader br = new BufferedReader (new InputStreamReader (System.in));
 
@@ -33,7 +33,9 @@ public class RemoveConsecutiveDuplicates {
             str = "";
         }
 
-        String ans = RemoveConsecutiveDuplicates.removeConsecutiveDuplicates(str);
+        char x = br.readLine().charAt(0);
+
+        String ans = RemoveCharacter.removeAllOccurrencesOfChar(str, x);
 
         System.out.println(ans);
 

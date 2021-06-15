@@ -13,12 +13,13 @@ public class CheckPermutation {
         int arr[] = new int[256];
         for (int i = 0;i < str1.length();i++){
             int val = str1.charAt(i);
-           // System.out.println(str1.charAt(i));
-            arr[(char)(val)] += 1;
+
+            arr[val] += 1;
+
         }
         for (int i = 0;i < str2.length();i++){
             int val = str2.charAt(i);
-            arr[(char)(val)] -= 1;
+            arr[val] -= 1;
         }
         for (int i = 0; i < arr.length;i++){
             if(arr[i] != 0){
