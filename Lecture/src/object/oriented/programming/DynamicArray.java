@@ -4,19 +4,13 @@ public class DynamicArray {
     int arr[];
     int nextIndex;
     public DynamicArray(){
-        arr = new int[10];
+        arr = new int[5];
         nextIndex = 0;
     }
     public int size(){
         return nextIndex;
     }
-//    public int getArrayIndex(int n){
-//        for (int i = 0; i < arr.length;i++){
-//            if(arr[i] == i){
-//                return i;
-//            }
-//        }
-//    }
+
     public void add(int element){
         if(nextIndex == arr.length){
             reconstruct();
@@ -28,13 +22,15 @@ public class DynamicArray {
     public void reconstruct() {
         int[] temp = arr;
         arr = new int[arr.length * 2];
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < temp.length; i++) {
             arr[i] = temp[i];
         }
     }
     public void set(int index, int element) {
         if(index > nextIndex){
-            return;
+            setPreviousIndexZero(index);
+            add(element);
+
         }
         else if(index < nextIndex){
             arr[index] = element;
@@ -42,6 +38,18 @@ public class DynamicArray {
         else {
             add(element);
         }
+    }
+    public void setPreviousIndexZero(int index){
+        if(index >= arr.length){
+            reconstruct();
+
+        }
+        for (int i = 0; i < index; i++){
+            if(arr[i] == 0 ){
+                set(i,0);
+            }
+        }
+
     }
     public int get(int index){
         if(index >= nextIndex) {
