@@ -21,7 +21,7 @@ public class Polynomial {
 
     public Polynomial add(Polynomial p){
        Polynomial ans = new Polynomial();
-       int size = p.coefficients.arr.length + 3;
+       int size = p.coefficients.arr.length + 5;
        ans.coefficients.arr = new int[size];
        for (int i = 0;i < p.coefficients.arr.length;i++){
            ans.coefficients.set(i,(this.coefficients.get(i) + p.coefficients.get(i)));
@@ -33,10 +33,10 @@ public class Polynomial {
     // Subtracts two polynomials and returns a new polynomial which has result
     public Polynomial subtract(Polynomial p) {
         Polynomial ans = new Polynomial();
-        int size = p.coefficients.arr.length + 2;
+        int size = p.coefficients.arr.length + 5;
         ans.coefficients.arr = new int[size];
         for (int i = 0; i < ans.coefficients.arr.length; i++) {
-            ans.coefficients.arr[i] = this.coefficients.arr[i] - p.coefficients.arr[i];
+            ans.coefficients.set(i,this.coefficients.arr[i] - p.coefficients.arr[i]);
         }
         return ans;
     }
@@ -48,7 +48,7 @@ public class Polynomial {
         p1.coefficients.arr = new int[size];
         for (int j = 0; j < p.coefficients.arr.length; j++)
             for (int i = 0; i < p.coefficients.arr.length; i++) {
-                p1.coefficients.arr[i + j] += this.coefficients.arr[j] * p.coefficients.arr[i];
+                p1.coefficients.set(i+j,(this.coefficients.arr[j] * p.coefficients.arr[i]));
             }
         return p1;
     }
