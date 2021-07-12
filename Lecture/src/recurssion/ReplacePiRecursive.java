@@ -4,13 +4,13 @@ import java.util.Scanner;
 public class ReplacePiRecursive {
     public static String replace(String str) {
         // Write your code here
-        if (str.length() < 1) {
-            return "";
+        if (str.length() <= 1) {
+            return str.substring(0,1);
         }
         if (str.substring(0, 2).startsWith("pi")) {
             return str.replace("pi", "3.14");
         }
-        return replace(str.substring(1));
+        return str.charAt(0) + replace(str.substring(1));
 
     }
 }
