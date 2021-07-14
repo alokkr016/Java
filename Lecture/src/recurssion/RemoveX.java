@@ -14,6 +14,7 @@ public class RemoveX {
         if(input.substring(0,1).startsWith("x")){
             return input.replace("x","");
         }
+
         return input.charAt(0) + removeX(input.substring(1));
     }
 }
