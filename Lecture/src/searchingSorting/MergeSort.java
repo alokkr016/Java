@@ -1,5 +1,6 @@
 package searchingSorting;
 import java.util.Scanner;
+
 public class MergeSort {
     public static void mergeSort(int[] input) {  // 2 6 8 5 4 3
         // Write your code here
@@ -9,44 +10,64 @@ public class MergeSort {
         int startIndex = 0;
         int endIndex = input.length - 1;
         mergeSortArray(input, startIndex, endIndex);
+
     }
 
     private static void mergeSortArray(int[] arr, int startIndex, int endIndex) {
-        if (startIndex < endIndex) {
 
+        if (startIndex < endIndex) {
 
             int mid = (startIndex + endIndex) / 2;
             mergeSortArray(arr, startIndex, mid);
             mergeSortArray(arr, mid + 1, endIndex);
-            merge(arr, startIndex, endIndex);
+            merge(arr, startIndex, endIndex, mid);
         }
     }
 
-    private static void merge(int[] arr, int startIndex, int endIndex) {
-        int[] newArray = new int[arr.length];
-        int mid = (startIndex + endIndex) / 2;
-//        for (int i = 0; i < arr.length; )
-        int i = 0;
-        int halfIndex = mid + 1;
-        while(startIndex <= mid && halfIndex <= endIndex);
-        {
-            if (arr[startIndex] < arr[halfIndex]) {
-                newArray[i] = arr[startIndex];
-                startIndex++;
-                i++;
+
+
+    public static void merge(int []arr, int startIndex, int endIndex,int mid) {
+        int n1 = mid  - startIndex + 1;
+        int n2 =  endIndex - mid;
+        int []arr1 = new int[n1];
+        int []arr2 = new int[n2];
+
+        for (int i = 0; i < n1; i++)
+            arr1[i] = arr[startIndex + i];
+        for (int j = 0; j < n2; j++)
+            arr2[j] = arr[mid + 1 + j];
+        int j = 0;
+        int k = 0;
+        int i = startIndex;
+
+        while(j < arr1.length && k < arr2.length){
+            if(arr1[j] < arr2[k]){
+                arr[i] = arr1[j];
+                j++;
             }
-            if (arr[startIndex] > arr[halfIndex]) {
-                newArray[i] = arr[halfIndex];
-                halfIndex++;
-                i++;
+            else{
+                arr[i] = arr2[k];
+                k++;
             }
+            i++;
+
         }
-        for (int k = 0; k < arr.length; k++) {
-            arr[k] = newArray[k];
+        while(j < arr1.length){
+
+            arr[i] = arr1[j];
+            i++;
+            j++;
         }
+        while(k < arr2.length){
+            arr[i] = arr2[k];
+            i++;
+            k++;
+        }
+
     }
+
+
 }
-
  class runner24 {
     public static int[] takeInput() {
         Scanner s = new Scanner(System.in);
