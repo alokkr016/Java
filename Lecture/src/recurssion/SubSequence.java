@@ -7,17 +7,16 @@ public class SubSequence {
             return ans;
         }
         String[] subString = subSequence(str.substring(1));
-//        for(int i = 0; i < subString.length;i++){
-//            System.out.println("substring = " + subString[i]);
-//        }
+
         String[] finalArray = new String[2 * subString.length];
 
         for(int i = 0;i < subString.length;i++){
+
             finalArray[i] = subString[i];
         }
         for(int i = 0;i < subString.length;i++) {
-            finalArray[i + subString.length] = str.charAt(0) + subString[i];
 
+            finalArray[i + subString.length] = str.charAt(0) + subString[i];
         }
         return finalArray;
     }

@@ -16,7 +16,7 @@ public class PrintSubSequence {
     }
 
     public static void main(String[] args) {
-        String str = "xyz";
+        String str = "abc";
         subSequence(str);
     }
 
