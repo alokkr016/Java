@@ -2,7 +2,7 @@ package recurssion;
 import java.util.Scanner;
 public class ReplaceCharacterRecursively {
     public static String replaceCharacter(String input, char c1, char c2) {
-        /* Your class should be named Solution
+        /* Your class should be named temp.Solution
          * Don't write main().
          * Don't read input, it is passed as function argument.
          * Return output and don't print it.

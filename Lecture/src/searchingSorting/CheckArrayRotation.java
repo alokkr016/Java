@@ -29,7 +29,7 @@ public class CheckArrayRotation {
 
 
 //===================================================
-//   public class Solution {
+//   public class temp.Solution {
 
 //     public static int arrayRotateCheck(int[] arr){
 //     	//Your code goes here

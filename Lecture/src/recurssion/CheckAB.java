@@ -28,7 +28,7 @@ public class CheckAB {
 
 /*
 ============Another solution====================
-public class Solution {
+public class temp.Solution {
 
 	public static boolean checkAB(String s) {
         if (s.length() == 0)

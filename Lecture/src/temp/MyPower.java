@@ -1,3 +1,5 @@
+package temp;
+
 public class MyPower {
     public static double power(int num,int exp){
         if (exp == 0){

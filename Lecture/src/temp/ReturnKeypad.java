@@ -1,6 +1,6 @@
+package temp;
 
-
-    public class ReturnKeypad {
+public class ReturnKeypad {
         public static String[] keypads(int n) {
             if (n == 0) {
                 String[] temp = {""};

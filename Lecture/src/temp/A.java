@@ -1,3 +1,5 @@
+package temp;
+
 class A{
     public static void A(){
         System.out.print("Good ");

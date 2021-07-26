@@ -8,7 +8,7 @@ public class AverageMarks {
 
     public static void main(String[] args) {
 
-        /* Your class should be named Solution.
+        /* Your class should be named temp.Solution.
          * Read input as specified in the question.
          * Print output as specified in the question.
          */
