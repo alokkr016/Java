@@ -6,7 +6,8 @@ public class PrintithNode {
     public static void printIthNode(LinkedListNode<Integer> head, int i){
         //Your code goes here
         LinkedListNode<Integer> temp = head;
-        while(i != 0){
+        int k = 0;
+        while(k != i){
 
         }
     }

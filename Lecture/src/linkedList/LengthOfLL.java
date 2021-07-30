@@ -16,16 +16,7 @@ public class LengthOfLL {
     }
 }
 
-class LinkedListNode<T> {
-    T data;
-    LinkedListNode<T> next;
-
-    public LinkedListNode(T data) {
-        this.data = data;
-    }
-}
-
- class Runner {
+class Runner {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
