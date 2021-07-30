@@ -1,4 +1,4 @@
-package codingninja.algo.ifelse;
+package algorithm.ifelse;
 
 import java.util.Scanner;
 
