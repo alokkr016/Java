@@ -2,14 +2,18 @@ package linkedList;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-public class PrintithNode {
+public class PrintIthNode {
     public static void printIthNode(LinkedListNode<Integer> head, int i){
         //Your code goes here
+
         LinkedListNode<Integer> temp = head;
         int k = 0;
-        while(k != i){
-
+        while(k != i && temp != null){
+            temp = temp.next;
+            k++;
         }
+        if(k == i)
+        System.out.println(temp.data);
     }
 }
 
@@ -25,15 +29,14 @@ class Runner2 {
         int i = 0;
         while(i < datas.length && !datas[i].equals("-1")) {
             int data = Integer.parseInt(datas[i]);
-            LinkedListNode<Integer> newNode = new LinkedListNode<Integer>(data);
+            LinkedListNode<Integer> newNode = new LinkedListNode<>(data);
             if(head == null) {
                 head = newNode;
-                tail = newNode;
             }
             else {
                 tail.next = newNode;
-                tail = newNode;
             }
+            tail = newNode;
             i += 1;
         }
 
@@ -55,7 +58,7 @@ class Runner2 {
 
             LinkedListNode<Integer> head = takeInput();
             int i = Integer.parseInt(br.readLine().trim());
-            PrintithNode.printIthNode(head, i);
+            PrintIthNode.printIthNode(head, i);
 
             t -= 1;
         }
