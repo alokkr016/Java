@@ -12,7 +12,7 @@ public class PrintIthNode {
             temp = temp.next;
             k++;
         }
-        if(k == i)
+        if(k == i && temp != null)
         System.out.println(temp.data);
     }
 }
