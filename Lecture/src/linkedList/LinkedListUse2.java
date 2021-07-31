@@ -3,11 +3,6 @@ package linkedList;
 import java.util.Scanner;
 
 public class LinkedListUse2 {
-    public static void main(String[] args) {
-        LinkedListNode<Integer> head = takeInput();
-        print(head);
-    }
-
     private static LinkedListNode<Integer> takeInput() {
         LinkedListNode<Integer> head = null;
         LinkedListNode<Integer> tail = null;
@@ -33,4 +28,11 @@ public class LinkedListUse2 {
             head = head.next;
         }
     }
+
+    public static void main(String[] args) {
+        LinkedListNode<Integer> head = takeInput();
+        print(head);
+    }
+
+
 }
