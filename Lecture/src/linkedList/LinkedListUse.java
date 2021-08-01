@@ -3,6 +3,23 @@ package linkedList;
 import java.util.Scanner;
 
 public class LinkedListUse {
+    public static LinkedListNode<Integer> insertAtN(LinkedListNode<Integer> head,int element,int pos){
+        LinkedListNode<Integer> newNode = new LinkedListNode<>(element);
+        if (pos == 0){
+            newNode.next = head;
+            return newNode;
+        }
+        int i = 0;
+        LinkedListNode<Integer> temp = head;
+        while (i < pos - 1){
+            temp = temp.next;
+            i++;
+        }
+
+        newNode.next = temp.next;
+        temp.next = newNode;
+        return head;
+    }
 
     public static LinkedListNode<Integer> takeInput(){
        LinkedListNode<Integer> head = null;
@@ -34,6 +51,8 @@ public class LinkedListUse {
     }
     public static void main(String[] args) {
         LinkedListNode<Integer> head = takeInput();
+        print(head);
+        head = insertAtN(head,15,2);
         print(head);
 //        LinkedListNode<Integer> node1 = new LinkedListNode<>(10);
 //        LinkedListNode<Integer> node2 = new LinkedListNode<>(20);
