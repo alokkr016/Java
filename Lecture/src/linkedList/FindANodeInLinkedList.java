@@ -17,6 +17,7 @@ public class FindANodeInLinkedList {
         while(!found && temp != null){
             if(temp.data == n){
                 found = true;
+                break;
             }
             count++;
             temp = temp.next;
