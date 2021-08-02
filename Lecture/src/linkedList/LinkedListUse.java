@@ -3,6 +3,21 @@ package linkedList;
 import java.util.Scanner;
 
 public class LinkedListUse {
+    public static LinkedListNode<Integer> deleteAtN(LinkedListNode<Integer> head,int pos){
+        LinkedListNode<Integer> temp = head;
+        if(pos == 0){
+            head = head.next;
+            return head;
+        }
+        int i = 0;
+        while (i < pos - 1){
+            temp = temp.next;
+            i++;
+        }
+        LinkedListNode<Integer> temp2 = temp.next;
+        temp.next = temp2.next;
+        return head;
+    }
     public static LinkedListNode<Integer> insertAtN(LinkedListNode<Integer> head,int element,int pos){
         LinkedListNode<Integer> newNode = new LinkedListNode<>(element);
         if (pos == 0){
@@ -10,6 +25,7 @@ public class LinkedListUse {
             return newNode;
         }
         int i = 0;
+//
         LinkedListNode<Integer> temp = head;
         while (i < pos - 1){
             temp = temp.next;
@@ -18,7 +34,7 @@ public class LinkedListUse {
 
         newNode.next = temp.next;
         temp.next = newNode;
-        return head;
+        return temp;
     }
 
     public static LinkedListNode<Integer> takeInput(){
@@ -51,17 +67,10 @@ public class LinkedListUse {
     }
     public static void main(String[] args) {
         LinkedListNode<Integer> head = takeInput();
+        head = deleteAtN(head,0);
+        head = deleteAtN(head,0);
         print(head);
-        head = insertAtN(head,15,2);
-        print(head);
-//        LinkedListNode<Integer> node1 = new LinkedListNode<>(10);
-//        LinkedListNode<Integer> node2 = new LinkedListNode<>(20);
-//        LinkedListNode<Integer> node3 = new LinkedListNode<>(30);
-//        node1.next = node2;
-//        node2.next = node3;
-//        LinkedListNode<Integer> head = node1;
-//        while(head != null){
-//            System.out.println(head.data);
-//            head = head.next;
+//        head = insertAtN(head,15,2);
+//        print(head);
         }
     }
