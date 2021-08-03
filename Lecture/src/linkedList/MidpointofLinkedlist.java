@@ -6,8 +6,8 @@ import java.io.InputStreamReader;
 public class MidpointofLinkedlist {
     public static LinkedListNode<Integer> midPoint(LinkedListNode<Integer> head) {
         //Your code goes here
-        LinkedListNode<Integer> slow = head,fast = head;
-        while(fast.next != null && fast.next.next != null){
+        LinkedListNode<Integer> slow = head,fast = head.next;
+        while(fast != null && fast.next != null){
             slow = slow.next;
             fast = fast.next.next;
         }
