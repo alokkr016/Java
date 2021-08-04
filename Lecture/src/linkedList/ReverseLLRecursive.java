@@ -6,7 +6,7 @@ You have to do this in O(N) time complexity where N is the size of the linked li
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-public class ReverseLL {
+public class ReverseLLRecursive {
     public static LinkedListNode<Integer> reverseLinkedListRec(LinkedListNode<Integer> head) {
         //Your code goes here
         if(head == null || head.next == null){
@@ -66,7 +66,7 @@ public class ReverseLL {
 
             LinkedListNode<Integer> head = takeInput();
 
-            LinkedListNode<Integer> newHead = ReverseLL.reverseLinkedListRec(head);
+            LinkedListNode<Integer> newHead = ReverseLLRecursive.reverseLinkedListRec(head);
             print(newHead);
 
             t -= 1;
