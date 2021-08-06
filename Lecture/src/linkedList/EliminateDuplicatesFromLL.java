@@ -13,7 +13,7 @@ public class EliminateDuplicatesFromLL {
         LinkedListNode<Integer> temp1 = head;
         LinkedListNode<Integer> temp2 = head.next;
         LinkedListNode<Integer> initialHead = head;
-        while(temp2.next != null){
+        while(temp2 != null){
             if(temp1.data == temp2.data){
                 temp2 = temp2.next;
             }
@@ -23,7 +23,7 @@ public class EliminateDuplicatesFromLL {
             }
         }
         temp1.next = null;
-        return initialHead;
+        return head;
     }
 
 }
