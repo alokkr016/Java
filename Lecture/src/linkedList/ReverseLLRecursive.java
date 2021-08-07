@@ -18,7 +18,39 @@ public class ReverseLLRecursive {
         head.next = null;
         return finalAns;
     }
-
+    public static LinkedListNode<Integer> reverseLinkedListRec2(LinkedListNode<Integer> head) {
+        if(head == null || head.next == null){
+            return head;
+        }
+        LinkedListNode<Integer> finalHead = reverseLinkedListRec2(head.next);
+        LinkedListNode<Integer> temp = finalHead;
+        while(temp.next != null){
+            temp = temp.next;
+        }
+        temp.next = head;
+        head.next = null;
+        return finalHead;
+    }
+    public static LinkedListNode<Integer> reverseLinkedListRec3(LinkedListNode<Integer> head) {
+        DoubleNode node = new DoubleNode();
+        node = reverseLinkedListRec4(head);
+        return node.head;
+    }
+    public static DoubleNode reverseLinkedListRec4(LinkedListNode<Integer> head) {
+        if(head == null || head.next == null){
+            DoubleNode ans = new DoubleNode();
+            ans.head = head;
+            ans.tail = head;
+            return ans;
+        }
+        DoubleNode smallAns = reverseLinkedListRec4(head.next);
+        smallAns.tail.next = head;
+        head.next = null;
+        DoubleNode ans = new DoubleNode();
+        ans.head = smallAns.head;
+        ans.tail = head;
+        return ans;
+    }
 }
 
 
@@ -66,7 +98,7 @@ public class ReverseLLRecursive {
 
             LinkedListNode<Integer> head = takeInput();
 
-            LinkedListNode<Integer> newHead = ReverseLLRecursive.reverseLinkedListRec(head);
+            LinkedListNode<Integer> newHead = ReverseLLRecursive.reverseLinkedListRec3(head);
             print(newHead);
 
             t -= 1;
