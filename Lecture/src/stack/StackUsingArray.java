@@ -12,12 +12,13 @@ public class StackUsingArray {
         top = -1;
     }
     public boolean isEmpty(){
-        if(top == -1){
-            return true;
-        }
-        else{
-            return false;
-        }
+//        if(top == -1){
+//            return true;
+//        }
+//        else{
+//            return false;
+//        }
+        return top == -1;
     }
     public int size(){
         return top + 1;
@@ -60,7 +61,7 @@ public void push(int element) {
     private void doubleCapacity(){
         int temp[] = data;
         data = new int[2 * temp.length];
-        for(int i = 0;i < top;i++){
+        for(int i = 0;i <= top;i++){
             data[i] = temp[i];
         }
     }
