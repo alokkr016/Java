@@ -1,9 +1,11 @@
 package stack;
 
 public class NodeStack<T>{
-    int data;
+    T data;
     NodeStack<T> next;
-    NodeStack(int data){
+
+    NodeStack(T data){
         this.data = data;
+        this.next = null;
     }
 }
