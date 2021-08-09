@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 class Node {
     int data;
-    NodeStack next;
+    Node next;
 
     public Node(int data) {
         this.data = data;

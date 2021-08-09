@@ -17,7 +17,7 @@ It returns the size of the stack at any given instance of time.
 It returns a boolean value indicating whether the stack is empty or not.
  */
 public class StackUsingLL {
-    private NodeStack head;
+    private Node head;
     private int size;
     public StackUsingLL(){
         head = null;
@@ -31,12 +31,12 @@ public class StackUsingLL {
     public boolean isEmpty() {
         //Implement the isEmpty() function
 
-            return head == null;
+        return head == null;
     }
 
     public void push(int element) {
         //Implement the push(element) function
-        NodeStack node = new NodeStack(element);
+        Node node = new Node(element);
         node.next = head;
         head = node;
         size++;
