@@ -37,7 +37,7 @@ public class QueueUsingLL {
             size++;
         } else {
             rear.next = newNode;
-            rear = rear.next;
+            rear = newNode;
             size++;
         }
     }
@@ -59,10 +59,10 @@ public class QueueUsingLL {
 
     public int front() {
         //Implement the front() function
-        if (front != null) {
-            return front.data;
-        } else {
+        if (getSize() == 0) {
             return -1;
+        } else {
+            return front.data;
         }
     }
 }
