@@ -4,24 +4,51 @@ public class QueueUsingLinkedListGeneric<T> {
     private NodeGeneric<T> front;
     private NodeGeneric<T> rear;
     int size;
+
     public QueueUsingLinkedListGeneric(){
         front = null;
         rear = null;
         size = 0;
     }
+
     int size(){
-
+        return size;
     }
+
     boolean isEmpty(){
-
+        return size == 0;
     }
-    T front(){
 
+    T front() throws QueueEmptyException {
+        if (size == 0){
+            throw new QueueEmptyException();
+        }
+        return front.data;
     }
-    void enqueue(int element){
 
+    void enqueue(T element){
+        NodeGeneric<T> newNode = new NodeGeneric<>(element);
+        if(rear == null){
+            front = newNode;
+            rear = newNode;
+        }
+        else {
+            rear.next = newNode;
+            rear = newNode;
+        }
+        size++;
     }
-    void dequeue(){
 
+    T dequeue() throws QueueEmptyException {
+        if(size == 0){
+            throw new QueueEmptyException();
+        }
+        T temp = front.data;
+        front = front.next;
+        if(size == 1){
+            rear = null;
+        }
+        size--;
+        return temp;
     }
 }
