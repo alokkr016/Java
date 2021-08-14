@@ -31,39 +31,41 @@ public class QueueUsingLL {
         //Implement the enqueue(element) function
         Node newNode = new Node(data);
 
-        if (front == null && rear == null) {
+        if (rear == null) {
             front = newNode;
             rear = newNode;
-            size++;
+
         } else {
             rear.next = newNode;
             rear = newNode;
-            size++;
+
         }
+        size++;
     }
 
 
     public int dequeue() {
         //Implement the dequeue() function
-        if (rear != null && front != null) {
+            if(size == 0){
+                return -1;
+            }
             int temp = front.data;
 
             front = front.next;
+            if(size == 1){
+                rear = null;
+            }
             size--;
             return temp;
-
-        } else {
-            return -1;
-        }
     }
 
     public int front() {
         //Implement the front() function
-        if (getSize() == 0) {
+        if (size == 0) {
             return -1;
-        } else {
-            return front.data;
         }
+        return front.data;
+
     }
 }
 
