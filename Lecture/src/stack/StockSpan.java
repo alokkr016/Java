@@ -19,21 +19,21 @@ public class StockSpan {
         for(int i = 1;i < price.length;i++){
 
 
-                while(!stack.empty() && price[i]  > price[stack.peek()] ){
-                    stack.pop();
-                }
-
-                if(stack.isEmpty()){
-                    arr[i] = i+1;
-
-                }
-                else{
-                    arr[i] = i - stack.peek();
-
-
-                }
-                stack.push(i);
+            while(!stack.empty() && price[i]  > price[stack.peek()] ){
+                stack.pop();
             }
+
+            if(stack.isEmpty()){
+                arr[i] = i+1;
+
+            }
+            else{
+                arr[i] = i - stack.peek();
+
+
+            }
+            stack.push(i);
+        }
 
         return arr;
     }
@@ -42,7 +42,8 @@ public class StockSpan {
 
 
 
- class Runner13 {
+
+class Runner13 {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
