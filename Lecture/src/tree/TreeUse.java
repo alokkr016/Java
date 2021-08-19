@@ -3,16 +3,16 @@ package tree;
 import java.util.Scanner;
 
 public class TreeUse {
-    public static TreeNode<Integer> takeInput(){
+    public static TreeNode<Integer> takeInput(Scanner s){
         int n;
-        Scanner s = new Scanner(System.in);
+//        Scanner s = new Scanner(System.in);
         System.out.println("Enter the next node data ");
         n = s.nextInt();
         TreeNode<Integer> root = new TreeNode<>(n);
         System.out.println("Enter the children for " + n);
         int childCount = s.nextInt();
         for(int i = 0;i < childCount;i++){
-            TreeNode<Integer> child = takeInput();
+            TreeNode<Integer> child = takeInput(s);
             root.children.add(child);
         }
         return root;
@@ -28,7 +28,8 @@ public class TreeUse {
         }
     }
     public static void main(String[] args) {
-        TreeNode<Integer> root = takeInput();
+        Scanner s = new Scanner(System.in);
+        TreeNode<Integer> root = takeInput(s);
         print(root);
 //        TreeNode<Integer> root = new TreeNode<>(4);
 //        TreeNode<Integer> node1 = new TreeNode<>(2);
