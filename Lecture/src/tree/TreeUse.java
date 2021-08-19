@@ -17,8 +17,19 @@ public class TreeUse {
         }
         return root;
     }
+    public static void print(TreeNode<Integer> root){
+        String s = root.data + ": ";
+        for (int i = 0;i < root.children.size();i++){
+            s = s + root.children.get(i).data + ", ";
+        }
+        System.out.println(s);
+        for (int i = 0;i < root.children.size();i++){
+            print(root.children.get(i));
+        }
+    }
     public static void main(String[] args) {
         TreeNode<Integer> root = takeInput();
+        print(root);
 //        TreeNode<Integer> root = new TreeNode<>(4);
 //        TreeNode<Integer> node1 = new TreeNode<>(2);
 //        TreeNode<Integer> node2 = new TreeNode<>(8);
