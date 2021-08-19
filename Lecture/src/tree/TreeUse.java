@@ -16,6 +16,6 @@ public class TreeUse {
         root.children.add(node3);
         node2.children.add(node4);
 
-//        System.out.println(root);
+        System.out.println(root);
     }
 }
