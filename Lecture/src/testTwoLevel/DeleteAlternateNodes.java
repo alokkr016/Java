@@ -1,4 +1,8 @@
 package testTwoLevel;
+/*
+Given a Singly Linked List of integers, delete all the alternate nodes in the list.
+ */
+
 import java.util.Scanner;
 
 public class DeleteAlternateNodes {
