@@ -1,4 +1,9 @@
 package testTwoLevel;
+/*
+You need to implement a class for Dequeue i.e. for double ended queue. In this queue, elements can be inserted and deleted from both the ends.
+You don't need to double the capacity.
+You need to implement the following functions -
+ */
 import java.util.LinkedList;
 import java.util.Scanner;
 
