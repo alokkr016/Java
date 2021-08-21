@@ -17,6 +17,9 @@ public class TreeUse {
         }
         return root;
     }
+    public static TreeNode<Integer> takeinputLevelWise(){
+
+    }
     public static void print(TreeNode<Integer> root){
         String s = root.data + ": ";
         for (int i = 0;i < root.children.size();i++){
