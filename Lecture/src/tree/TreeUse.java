@@ -17,7 +17,29 @@ public class TreeUse {
         }
         return root;
     }
-    public static TreeNode<Integer> takeinputLevelWise(){
+    public static TreeNode<Integer> takeInputLevelWise(){
+        Scanner s = new Scanner(System.in);
+        QueueUsingLL<TreeNode<Integer>> pending = new QueueUsingLL<>();
+        System.out.println("Enter the root of the tree ");
+        TreeNode<Integer> root = new TreeNode<>(s.nextInt());
+        pending.enqueue(root);
+
+        while(!pending.isEmpty()){
+            try {
+                TreeNode<Integer> frontNode = pending.dequeue();
+                System.out.println("Enter the child for root " + frontNode);
+                int size = s.nextInt();
+                for(int i = 0;i < size;i++){
+
+                    TreeNode<Integer> child = new TreeNode<>()
+                }
+            } catch (QueueEmptyException e) {
+                //will not rich here
+                return null;
+            }
+
+
+        }
 
     }
     public static void print(TreeNode<Integer> root){
