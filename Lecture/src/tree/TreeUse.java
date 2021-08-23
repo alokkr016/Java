@@ -27,11 +27,14 @@ public class TreeUse {
         while(!pending.isEmpty()){
             try {
                 TreeNode<Integer> frontNode = pending.dequeue();
-                System.out.println("Enter the child for root " + frontNode);
+                System.out.println("Enter the number child for root " + frontNode.data);
                 int size = s.nextInt();
                 for(int i = 0;i < size;i++){
-
-                    TreeNode<Integer> child = new TreeNode<>()
+                    System.out.println("Enter the value for the child");
+                    int val = s.nextInt();
+                    TreeNode<Integer> child = new TreeNode<>(val);
+                    frontNode.children.add(child);
+                    pending.enqueue(child);
                 }
             } catch (QueueEmptyException e) {
                 //will not rich here
@@ -40,7 +43,7 @@ public class TreeUse {
 
 
         }
-
+        return root;
     }
     public static void print(TreeNode<Integer> root){
         String s = root.data + ": ";
@@ -53,9 +56,10 @@ public class TreeUse {
         }
     }
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
-        TreeNode<Integer> root = takeInput(s);
-        print(root);
+//        Scanner s = new Scanner(System.in);
+//        TreeNode<Integer> root = takeInput(s);
+        TreeNode<Integer> root = takeInputLevelWise();
+         print(root);
 //        TreeNode<Integer> root = new TreeNode<>(4);
 //        TreeNode<Integer> node1 = new TreeNode<>(2);
 //        TreeNode<Integer> node2 = new TreeNode<>(8);
