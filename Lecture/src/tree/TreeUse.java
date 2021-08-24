@@ -30,7 +30,7 @@ public class TreeUse {
                 System.out.println("Enter the number child for root " + frontNode.data);
                 int size = s.nextInt();
                 for(int i = 0;i < size;i++){
-                    System.out.println("Enter the value for the child");
+                    System.out.println("Enter the " + (i + 1) + " of the " + frontNode.data);
                     int val = s.nextInt();
                     TreeNode<Integer> child = new TreeNode<>(val);
                     frontNode.children.add(child);
