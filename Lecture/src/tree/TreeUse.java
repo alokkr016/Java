@@ -3,6 +3,7 @@ package tree;
 import java.util.Scanner;
 
 public class TreeUse {
+
     public static TreeNode<Integer> takeInput(Scanner s){
         int n;
 //        Scanner s = new Scanner(System.in);
@@ -17,6 +18,7 @@ public class TreeUse {
         }
         return root;
     }
+
     public static TreeNode<Integer> takeInputLevelWise(){
         Scanner s = new Scanner(System.in);
         QueueUsingLL<TreeNode<Integer>> pending = new QueueUsingLL<>();
@@ -30,7 +32,7 @@ public class TreeUse {
                 System.out.println("Enter the number child for root " + frontNode.data);
                 int size = s.nextInt();
                 for(int i = 0;i < size;i++){
-                    System.out.println("Enter the " + (i + 1) + " of the " + frontNode.data);
+                    System.out.println("Enter the " + (i + 1) + "th of the " + frontNode.data);
                     int val = s.nextInt();
                     TreeNode<Integer> child = new TreeNode<>(val);
                     frontNode.children.add(child);
@@ -45,6 +47,29 @@ public class TreeUse {
         }
         return root;
     }
+
+    public static void printLevelWise(TreeNode<Integer> root){
+        QueueUsingLL<TreeNode<Integer>> queue = new QueueUsingLL<>();
+        queue.enqueue(root);
+        while(!queue.isEmpty()) {
+            TreeNode<Integer> temp = null;
+            int count = queue.size();
+            for (int j = 0; j < count; j++) {
+                try {
+                    temp = queue.dequeue();
+                } catch (QueueEmptyException e) {
+
+                }
+                System.out.print(temp.data + " ");
+                for (int i = 0; i < temp.children.size(); i++) {
+                    queue.enqueue(temp.children.get(i));
+                }
+
+            }
+            System.out.println();
+        }
+}
+
     public static void print(TreeNode<Integer> root){
         String s = root.data + ": ";
         for (int i = 0;i < root.children.size();i++){
@@ -55,11 +80,12 @@ public class TreeUse {
             print(root.children.get(i));
         }
     }
+
     public static void main(String[] args) {
 //        Scanner s = new Scanner(System.in);
 //        TreeNode<Integer> root = takeInput(s);
         TreeNode<Integer> root = takeInputLevelWise();
-         print(root);
+         printLevelWise(root);
 //        TreeNode<Integer> root = new TreeNode<>(4);
 //        TreeNode<Integer> node1 = new TreeNode<>(2);
 //        TreeNode<Integer> node2 = new TreeNode<>(8);
