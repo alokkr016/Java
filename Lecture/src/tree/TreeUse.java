@@ -70,6 +70,19 @@ public class TreeUse {
         }
 }
 
+    public static int numNode(TreeNode<Integer> root){
+        // when there is no none in tree
+        if(root == null){
+            return 0;
+        }
+
+        int count = 1;
+        for(int i = 0;i < root.children.size();i++){
+            count += numNode(root.children.get(i));
+        }
+        return count;
+    }
+
     public static void print(TreeNode<Integer> root){
         String s = root.data + ": ";
         for (int i = 0;i < root.children.size();i++){
@@ -80,6 +93,7 @@ public class TreeUse {
             print(root.children.get(i));
         }
     }
+
 
     public static void main(String[] args) {
 //        Scanner s = new Scanner(System.in);
