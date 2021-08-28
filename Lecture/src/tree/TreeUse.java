@@ -47,7 +47,17 @@ public class TreeUse {
         }
         return root;
     }
-
+    public static void printAtk(TreeNode<Integer> root,int k){
+        if(k < 0){
+            return;
+        }
+        if(k == 0){
+            System.out.println(root.data);
+        }
+        for(int i = 0;i < root.children.size();i++){
+            printAtk(root.children.get(i), k - 1);
+        }
+    }
     public static void printLevelWise(TreeNode<Integer> root){
         QueueUsingLL<TreeNode<Integer>> queue = new QueueUsingLL<>();
         queue.enqueue(root);
@@ -99,7 +109,8 @@ public class TreeUse {
 //        Scanner s = new Scanner(System.in);
 //        TreeNode<Integer> root = takeInput(s);
         TreeNode<Integer> root = takeInputLevelWise();
-         printLevelWise(root);
+        printAtk(root,1);
+//         printLevelWise(root);
 //        TreeNode<Integer> root = new TreeNode<>(4);
 //        TreeNode<Integer> node1 = new TreeNode<>(2);
 //        TreeNode<Integer> node2 = new TreeNode<>(8);
