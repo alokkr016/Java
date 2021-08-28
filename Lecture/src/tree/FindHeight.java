@@ -6,8 +6,9 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class FindHeight {
+
     public static int getHeight(TreeNode<Integer> root){
-        if(root.children.size() == 1){
+        if(root.children.size() == 0){
             return 1;
         }
         int count = 0;
