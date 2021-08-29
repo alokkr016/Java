@@ -4,21 +4,52 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class NodeHavingSumOfChildrenAndNodeIsMax {
+
+    public static TreeNode<Integer> maxSumNode2(TreeNode<Integer> root) {
+        if (root == null) {
+            return null;
+        }
+        int sum = root.data;
+        TreeNode<Integer> ans = root;
+        for (int i = 0; i < root.children.size(); i++) {
+            sum += root.children.get(i).data;
+        }
+        TreeNode<Integer> temp;
+        for (int i = 0; i < root.children.size(); i++) {
+            temp = maxSumNode2(root.children.get(i));
+            int childsum = temp.data;
+            for (int j = 0; j < temp.children.size(); j++) {
+                childsum += temp.children.get(j).data;
+            }
+            if (childsum > sum) {
+                ans = temp;
+                sum = childsum;
+            }
+        }
+        return ans;
+    }
+
     public static TreeNode<Integer> maxSumNode(TreeNode<Integer> root){
         // Write your code here
-        Pair ans = new Pair();
+        Pair<Integer> ans = new Pair<>();
         ans = maxSumNodeHelper(root);
         return ans.root;
     }
-    public static Pair maxSumNodeHelper(TreeNode<Integer> root){
-        Pair ans = new Pair();
+    public static Pair<Integer> maxSumNodeHelper(TreeNode<Integer> root){
+        if(root == null){
+            Pair<Integer> t = new Pair();
+            t.root = null;
+            t.sum = Integer.MIN_VALUE;
+            return t;
+        }
+        Pair<Integer> ans = new Pair<>();
         ans.root = root;
         ans.sum = root.data;
 
         for(int i = 0;i < root.children.size();i++){
             ans.sum += root.children.get(i).data;
         }
-        Pair temp = new Pair();
+        Pair<Integer> temp = new Pair<>();
         for(int i = 0;i < root.children.size();i++){
             temp = maxSumNodeHelper(root.children.get(i));
             if(temp.sum > ans.sum){
@@ -32,7 +63,7 @@ public class NodeHavingSumOfChildrenAndNodeIsMax {
 
 }
 
-class Pair {
+class Pair<T> {
     TreeNode<Integer> root;
     int sum;
  }
@@ -69,7 +100,7 @@ class Pair {
 
     public static void main(String[] args) {
         TreeNode<Integer> root =  takeInputLevelWise();
-        TreeNode<Integer> ans = NodeHavingSumOfChildrenAndNodeIsMax.maxSumNode(root);
+        TreeNode<Integer> ans = NodeHavingSumOfChildrenAndNodeIsMax.maxSumNode2(root);
         if(ans == null){
             System.out.println(Integer.MIN_VALUE);
         }else{
