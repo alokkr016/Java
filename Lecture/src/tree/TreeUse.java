@@ -79,6 +79,15 @@ public class TreeUse {
             System.out.println();
         }
 }
+    public static void printPreOrder(TreeNode<Integer> root){
+        if(root == null){
+            return;
+        }
+        System.out.print(root.data + " ");
+        for(int i = 0;i < root.children.size();i++){
+            printPreOrder(root.children.get(i));
+        }
+    }
 
     public static int numNode(TreeNode<Integer> root){
         // when there is no none in tree
@@ -109,7 +118,8 @@ public class TreeUse {
 //        Scanner s = new Scanner(System.in);
 //        TreeNode<Integer> root = takeInput(s);
         TreeNode<Integer> root = takeInputLevelWise();
-        printAtk(root,1);
+        printPreOrder(root);
+//        printAtk(root,1);
 //         printLevelWise(root);
 //        TreeNode<Integer> root = new TreeNode<>(4);
 //        TreeNode<Integer> node1 = new TreeNode<>(2);
