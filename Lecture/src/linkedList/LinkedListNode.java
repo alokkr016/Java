@@ -1,9 +1,9 @@
 package linkedList;
 
 class LinkedListNode<T> {
-    int data;
+    T data;
     LinkedListNode<T> next;
-    LinkedListNode(int data){
+    LinkedListNode(T data){
         this.data = data;
     }
 }

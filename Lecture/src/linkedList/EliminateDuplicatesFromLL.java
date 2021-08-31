@@ -6,7 +6,7 @@ list only contains unique elements and returns the head to the updated list.
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
+
 public class EliminateDuplicatesFromLL {
     public static LinkedListNode<Integer> removeDuplicates(LinkedListNode<Integer> head) {
         //Your code goes here
@@ -14,7 +14,7 @@ public class EliminateDuplicatesFromLL {
         LinkedListNode<Integer> temp2 = head.next;
         LinkedListNode<Integer> initialHead = head;
         while(temp2 != null){
-            if(temp1.data == temp2.data){
+            if(temp1.data.equals(temp2.data)){
                 temp2 = temp2.next;
             }
             else{
