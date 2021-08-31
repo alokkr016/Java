@@ -1,36 +1,47 @@
 package tree;
 import java.util.Scanner;
 public class SecondLargestElementInTree {
-//    public static TreeNode<Integer> findSecondLargest(TreeNode<Integer> root){
-//        Helper<Integer> ans = new Helper<>();
-//        ans = findSecondLargestHelper(root);
-//        return ans.secondMax;
-//    }
-//
-//    public static Helper<Integer> findSecondLargestHelper(TreeNode<Integer> root){
-//        Helper<Integer> node = new Helper<>();
-//        node.max = root;
-//        node.secondMax = null;
-//
-//        for(int i = 0;i < root.children.size();i++){
-//            Helper<Integer> childNode = findSecondLargestHelper(root.children.get(i));
-//            TreeNode<Integer> discard = null;
-//            if(childNode.max.data > node.max.data){
-//                discard = node.max;
-//                node.max.data = childNode.max.data;
-//            }
-//            if(node.secondMax == null || node.secondMax.data < discard.data){
-//                if(discard.data < childNode.secondMax){
-//                    node.secondMax.data = childNode.secondMax.data;
-//                }
-//                else{
-//                    node.secondMax.data = discard.data;
-//                }
-//            }
-//        }
-//        return node;
-//    }
-//}
+    public static TreeNode<Integer> findSecondLargest2(TreeNode<Integer> root){
+        Helper<Integer> ans;
+        ans = findSecondLargestHelper(root);
+        return ans.secondMax;
+    }
+
+    public static Helper<Integer> findSecondLargestHelper(TreeNode<Integer> root){
+        Helper<Integer> ans;
+        if(root == null){
+            ans = new Helper<>();
+            ans.max = null;
+            ans.secondMax = null;
+        }
+        ans = new Helper<>();
+        ans.max = root;
+        ans.secondMax = null;
+
+        for(int i = 0;i < root.children.size();i++){
+            Helper<Integer> childNode = findSecondLargestHelper(root.children.get(i));
+            if(childNode.max.data > ans.max.data){
+                if(childNode.secondMax == null || childNode.secondMax.data < ans.max.data){
+                    ans.secondMax = ans.max;
+                    ans.max = childNode.max;
+                }
+                else{
+                    ans.max = childNode.max;
+                    ans.secondMax = childNode.secondMax;
+                }
+            }
+            else if(childNode.max.data.equals(ans.max.data) && childNode.secondMax !=  null){
+                if(ans.secondMax == null || ans.secondMax.data < childNode.secondMax.data){
+                ans.secondMax = childNode.secondMax;
+            }
+            else if(!ans.max.data.equals(childNode.max.data) && (childNode.secondMax == null || ans.secondMax.data < childNode.max.data)){
+                ans.secondMax = childNode.max;
+                }
+            }
+        }
+        return ans;
+    }
+
 public static void change(TreeNode<Integer> root,int m) {
 
     if(root==null) {
@@ -110,7 +121,7 @@ class Helper<T>{
 
     public static void main(String[] args) {
         TreeNode<Integer> root =  takeInputLevelWise();
-        TreeNode<Integer> ans = SecondLargestElementInTree.findSecondLargest(root);
+        TreeNode<Integer> ans = SecondLargestElementInTree.findSecondLargest2(root);
         if(ans == null){
             System.out.println(Integer.MIN_VALUE);
         }else{
