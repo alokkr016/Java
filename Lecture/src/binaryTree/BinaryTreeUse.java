@@ -6,7 +6,7 @@ public class BinaryTreeUse {
 
     public static BinaryTreeNode<Integer> takeInput(Scanner s){
         int data;
-        System.out.println("Enter the root of the Tree: ");
+        System.out.println("Enter the root data ");
         data = s.nextInt();
         if(data == -1){
             return null;
@@ -16,13 +16,67 @@ public class BinaryTreeUse {
         root.right = takeInput(s);
         return root;
     }
+    public static BinaryTreeNode<Integer> takeInputLevelWise(){
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter the root: ");
+        BinaryTreeNode<Integer> node =  new BinaryTreeNode<>(s.nextInt());
+        QueueUsingLL<BinaryTreeNode<Integer>> pending = new QueueUsingLL<>();
+        pending.enqueue(node);
 
+        while(!pending.isEmpty()){
+            BinaryTreeNode<Integer> root;
+            try {
+                root = pending.dequeue();
+            } catch (QueueEmptyException e) {
+                return null;
+            }
+            System.out.println("Enter the left child of " + root.data);
+            int leftChild = s.nextInt();
+            if(leftChild != -1){
+                BinaryTreeNode<Integer> child = new BinaryTreeNode<>(leftChild);
+                pending.enqueue(child);
+                root.left = child;
+            }
+
+            System.out.println("Enter the right child of " + root.data);
+            int rightChild = s.nextInt();
+            if(rightChild != -1){
+                BinaryTreeNode<Integer> child = new BinaryTreeNode<>(rightChild);
+                pending.enqueue(child);
+                root.right = child;
+            }
+
+        }
+        return node;
+
+    }
+    public static void printTree(BinaryTreeNode<Integer> root){
+        if(root == null){
+            return;
+        }
+        String toBePrinted = root.data + " ";
+        if(root.left != null){
+            toBePrinted += "L " + root.left.data + ", ";
+        }
+        if(root.right != null){
+            toBePrinted += "R " + root.right.data;
+        }
+        System.out.println(toBePrinted);
+        printTree(root.left);
+        printTree(root.right);
+    }
     public static void main(String[] args) {
-        BinaryTreeNode<Integer> root = new BinaryTreeNode<>(2);
-        BinaryTreeNode<Integer> node1 = new BinaryTreeNode<>(3);
-        BinaryTreeNode<Integer> node2 = new BinaryTreeNode<>(4);
-        root.left = node1;
-        root.right = node2;
+        Scanner s = new Scanner(System.in);
+//        BinaryTreeNode<Integer> root = takeInput(s);
+        BinaryTreeNode<Integer> root = takeInputLevelWise();
+        printTree(root);
+
+        s.close();
+//        BinaryTreeNode<Integer> root = new BinaryTreeNode<>(2);
+//        BinaryTreeNode<Integer> node1 = new BinaryTreeNode<>(3);
+//        BinaryTreeNode<Integer> node2 = new BinaryTreeNode<>(4);
+//        root.left = node1;
+//        root.right = node2;
 
     }
 }
