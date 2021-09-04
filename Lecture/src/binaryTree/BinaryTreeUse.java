@@ -4,6 +4,16 @@ import java.util.Scanner;
 
 public class BinaryTreeUse {
 
+    public static int height(BinaryTreeNode<Integer> root) {
+        //Your code goes here
+        if(root == null){
+            return 0;
+        }
+        int height1 = height(root.left);
+        int height2 = height(root.right);
+        return Math.max(height1 + 1, height2 + 1);
+    }
+
     public static int countNodes(BinaryTreeNode<Integer> root) {
         if (root == null) {
             return 0;
@@ -104,7 +114,7 @@ public class BinaryTreeUse {
 //        Scanner s = new Scanner(System.in);
 //        BinaryTreeNode<Integer> root = takeInput(s);
         BinaryTreeNode<Integer> root = takeInputLevelWise();
-        System.out.println(countNodes(root));
+//        System.out.println(countNodes(root));
 //        printTreeLevelWise(root);
 
 //        s.close();
