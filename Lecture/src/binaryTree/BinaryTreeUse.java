@@ -3,6 +3,15 @@ package binaryTree;
 import java.util.Scanner;
 
 public class BinaryTreeUse {
+    public static int diameter(BinaryTreeNode<Integer> root){
+        if(root == null){
+            return 0;
+        }
+        int option1 = height(root.left) + height(root.right);
+        int option3 = diameter(root.left);
+        int option2 = diameter(root.right);
+        return Math.max(option1,Math.max(option2,option3));
+    }
 
     public static int height(BinaryTreeNode<Integer> root) {
         //Your code goes here
@@ -114,6 +123,7 @@ public class BinaryTreeUse {
 //        Scanner s = new Scanner(System.in);
 //        BinaryTreeNode<Integer> root = takeInput(s);
         BinaryTreeNode<Integer> root = takeInputLevelWise();
+        System.out.println(diameter(root));
 //        System.out.println(countNodes(root));
 //        printTreeLevelWise(root);
 
