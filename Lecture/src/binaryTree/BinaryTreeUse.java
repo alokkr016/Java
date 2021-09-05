@@ -123,7 +123,7 @@ public class BinaryTreeUse {
 //        Scanner s = new Scanner(System.in);
 //        BinaryTreeNode<Integer> root = takeInput(s);
         BinaryTreeNode<Integer> root = takeInputLevelWise();
-        System.out.println(diameter(root));
+        System.out.println("diameter: " + diameter(root));
 //        System.out.println(countNodes(root));
 //        printTreeLevelWise(root);
 
