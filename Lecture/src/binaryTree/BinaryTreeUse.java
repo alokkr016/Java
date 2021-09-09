@@ -3,6 +3,16 @@ package binaryTree;
 import java.util.Scanner;
 
 public class BinaryTreeUse {
+
+    public static void inOrder(BinaryTreeNode<Integer> root){
+        if(root == null){
+            return;
+        }
+        inOrder(root.left);
+        System.out.print(root.data + " ");
+        inOrder(root.right);
+    }
+
     public static Pair<Integer, Integer> heightDiameter(BinaryTreeNode<Integer> root){
         if(root == null){
             Pair<Integer, Integer> output = new Pair<>();
@@ -25,6 +35,7 @@ public class BinaryTreeUse {
 
 
     }
+
     public static int diameter(BinaryTreeNode<Integer> root){
         if(root == null){
             return 0;
@@ -55,6 +66,7 @@ public class BinaryTreeUse {
 
         return count;
     }
+
     public static BinaryTreeNode<Integer> takeInput(Scanner s){
         int data;
         System.out.println("Enter the root data ");
@@ -67,6 +79,7 @@ public class BinaryTreeUse {
         root.right = takeInput(s);
         return root;
     }
+
     public static BinaryTreeNode<Integer> takeInputLevelWise(){
         Scanner s = new Scanner(System.in);
         System.out.println("Enter the root: ");
@@ -141,11 +154,14 @@ public class BinaryTreeUse {
         printTree(root.left);
         printTree(root.right);
     }
+
     public static void main(String[] args) {
 //        Scanner s = new Scanner(System.in);
 //        BinaryTreeNode<Integer> root = takeInput(s);
         BinaryTreeNode<Integer> root = takeInputLevelWise();
-        System.out.println("diameter: " + heightDiameter(root));
+        inOrder(root);
+
+//        System.out.println("diameter: " + heightDiameter(root));
 //        System.out.println(countNodes(root));
 //        printTreeLevelWise(root);
 
