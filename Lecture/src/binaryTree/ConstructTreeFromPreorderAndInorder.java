@@ -18,8 +18,8 @@ public class ConstructTreeFromPreorderAndInorder {
         BinaryTreeNode<Integer> root = new BinaryTreeNode<>(temp);
 
         int count = 0;
-        int i = 0;
-        while(i < inOrder.length){
+        int i = inOrderStart;
+        while(i <= inOrderEnd){
             if(inOrder[i] == temp){
                 count = i;
                 break;
@@ -27,8 +27,8 @@ public class ConstructTreeFromPreorderAndInorder {
             i++;
         }
 
-        root.left = buildTree(preOrder, inOrder,preOrderStart + 1,count,inOrderStart,count - 1);
-        root.right = buildTree(preOrder, inOrder, count + 1,preOrderEnd,count + 1,inOrderEnd);
+        root.left = buildTree(preOrder, inOrder,preOrderStart + 1,preOrderStart + (count - inOrderStart),inOrderStart,count - 1);
+        root.right = buildTree(preOrder, inOrder, preOrderStart + (count - inOrderStart) + 1,preOrderEnd,count + 1,inOrderEnd);
 
         return root;
     }
