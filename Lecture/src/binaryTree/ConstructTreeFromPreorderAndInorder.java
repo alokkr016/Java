@@ -19,13 +19,16 @@ public class ConstructTreeFromPreorderAndInorder {
 
         int count = 0;
         int i = 0;
-        while(inOrder[i] != temp){
-            count++;
+        while(i < inOrder.length){
+            if(inOrder[i] == temp){
+                count = i;
+                break;
+            }
             i++;
         }
 
-        root.left = buildTree(preOrder, inOrder,preOrderStart + 1,preOrderEnd,inOrderStart + 1,inOrderEnd);
-        root.right = buildTree(preOrder, inOrder, count + 1,preOrderEnd,i + 1,inOrderEnd);
+        root.left = buildTree(preOrder, inOrder,preOrderStart + 1,count,inOrderStart,count - 1);
+        root.right = buildTree(preOrder, inOrder, count + 1,preOrderEnd,count + 1,inOrderEnd);
 
         return root;
     }
