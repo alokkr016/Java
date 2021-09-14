@@ -7,43 +7,81 @@ import java.util.Queue;
 public class ConstructTreeFromPreorderAndInorder {
     public static BinaryTreeNode<Integer> buildTree(int[] preOrder, int[] inOrder) {
         //Your code goes here
-        return buildTree(preOrder,inOrder,0, preOrder.length - 1,0, inOrder.length - 1);
+        return buildTree(preOrder, inOrder, 0, preOrder.length - 1, 0, inOrder.length - 1);
     }
 
-    public static BinaryTreeNode<Integer> buildTree(int[] preOrder, int[] inOrder,int preOrderStart,int preOrderEnd, int inOrderStart, int inOrderEnd){
-        if(preOrderStart > preOrderEnd || inOrderStart > inOrderEnd){
+    /*
+        public static BinaryTreeNode<Integer> buildTree(int[] preOrder, int[] inOrder,int preOrderStart,int preOrderEnd, int inOrderStart, int inOrderEnd){
+            if(preOrderStart > preOrderEnd || inOrderStart > inOrderEnd){
+                return null;
+            }
+            int temp = preOrder[preOrderStart];
+            BinaryTreeNode<Integer> root = new BinaryTreeNode<>(temp);
+
+            int count = 0;
+            int i = inOrderStart;
+            while(i <= inOrderEnd){
+                if(inOrder[i] == temp){
+                    count = i;
+                    break;
+                }
+                i++;
+            }
+
+            root.left = buildTree(preOrder, inOrder,preOrderStart + 1,preOrderStart + (count),inOrderStart,count - 1);
+            System.out.println("Inorder " + inOrderStart);
+            System.out.println("Preorder " + preOrderStart);
+            root.right = buildTree(preOrder, inOrder, preOrderStart + (count - inOrderStart) + 1,preOrderEnd,count + 1,inOrderEnd);
+
+            return root;
+        }
+    }
+    */
+    public static BinaryTreeNode<Integer> buildTree(int[] preOrder, int[] inOrder, int preOrderStart, int preOrderEnd, int inOrderStart, int inOrderEnd) {
+        if (preOrderStart > preOrderEnd || inOrderStart > inOrderEnd) {
             return null;
         }
         int temp = preOrder[preOrderStart];
         BinaryTreeNode<Integer> root = new BinaryTreeNode<>(temp);
 
         int count = 0;
-        int i = inOrderStart;
-        while(i <= inOrderEnd){
-            if(inOrder[i] == temp){
+        for (int i = inOrderStart; i <= inOrderEnd; i++) {
+            if (temp == inOrder[i]) {
                 count = i;
                 break;
             }
-            i++;
         }
 
-        root.left = buildTree(preOrder, inOrder,preOrderStart + 1,preOrderStart + (count - inOrderStart),inOrderStart,count - 1);
-        root.right = buildTree(preOrder, inOrder, preOrderStart + (count - inOrderStart) + 1,preOrderEnd,count + 1,inOrderEnd);
+        int siPreLeft = preOrderStart + 1;
+        int siInLeft = inOrderStart;
+        int eiInLeft = count - 1;
+        int siInRight = count + 1;
+        int eiPreRight = preOrderEnd;
+        int eiInRight = inOrderEnd;
+        int leftSubTreeLength = eiInLeft - siInLeft + 1;
+        int eiPreLeft = siPreLeft + leftSubTreeLength - 1;
+        int siPreRight = eiPreLeft + 1;
+
+
+
+
+        root.left = buildTree(preOrder, inOrder, siPreLeft, eiPreLeft, siInLeft, eiInLeft);
+        root.right = buildTree(preOrder, inOrder, siPreRight, eiPreRight, siInRight, eiInRight);
 
         return root;
     }
 }
 
-class Pair2 {
-    int[] preOrder;
-    int[] inOrder;
+    class Pair2 {
+        int[] preOrder;
+        int[] inOrder;
 
-    public Pair2(int[] preOrder, int[] inOrder) {
-        this.preOrder = preOrder;
-        this.inOrder = inOrder;
+        public Pair2(int[] preOrder, int[] inOrder) {
+            this.preOrder = preOrder;
+            this.inOrder = inOrder;
+        }
+
     }
-
-}
 
 class Runner11 {
 
