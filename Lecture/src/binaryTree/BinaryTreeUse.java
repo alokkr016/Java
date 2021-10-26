@@ -1,8 +1,24 @@
 package binaryTree;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BinaryTreeUse {
+
+    public static ArrayList<Integer> toArray(BinaryTreeNode<Integer> root) {
+        ArrayList<Integer> result = new ArrayList<>();
+        toArrayHelp(root, result);
+        return result;
+    }
+
+    private static void toArrayHelp(BinaryTreeNode<Integer> root, ArrayList<Integer> result) {
+        if (root == null) {
+            return;
+        }
+        toArrayHelp(root.left, result);
+        result.add(root.data);
+        toArrayHelp(root.right, result);
+    }
 
     public static void inOrder(BinaryTreeNode<Integer> root){
         if(root == null){
@@ -159,7 +175,11 @@ public class BinaryTreeUse {
 //        Scanner s = new Scanner(System.in);
 //        BinaryTreeNode<Integer> root = takeInput(s);
         BinaryTreeNode<Integer> root = takeInputLevelWise();
-        inOrder(root);
+//        inOrder(root);
+        ArrayList<Integer> ans = toArray(root);
+        for(int i = 0;i < ans.size();i++){
+            System.out.print(ans.get(i) + " ");
+        }
 
 //        System.out.println("diameter: " + heightDiameter(root));
 //        System.out.println(countNodes(root));
