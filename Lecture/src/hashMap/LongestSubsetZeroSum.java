@@ -22,10 +22,10 @@ public class LongestSubsetZeroSum {
                     if(l > max){
                         max = l;
                     }
-                    h.put(value,i);
+
                 }
 
-                if(h.containsKey(value)){
+                else if(h.containsKey(value)){
                     l = i - h.get(value);
                     if(l > max) {
                         max = l;
@@ -41,7 +41,7 @@ public class LongestSubsetZeroSum {
 
 
 
- class Main12 {
+class Main12 {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));;
     static StringTokenizer st;
