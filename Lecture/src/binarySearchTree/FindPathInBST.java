@@ -6,30 +6,29 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class FindPathInBST {
+
     public static ArrayList<Integer> getPath(BinaryTreeNode<Integer> root, int data) {
         if (root == null) {
             return null;
         }
         ArrayList<Integer> output = new ArrayList<Integer>();
-        if (root.data == data) {
+        if(root.data == data){
             output.add(root.data);
             return output;
-        } else if (data < root.data) {
-            output = getPath(root.left, data);
-            if (output != null) {
-                output.add(root.data);
-                return output;
-            }
-        } else {
-            output = getPath(root.right, data);
-            if (output != null) {
-                output.add(root.data);
-                return output;
-            } else {
-                return null;
-            }
         }
-        return output;
+        else if(data < root.data){
+            output = getPath(root.left,data);
+            if(output != null){
+                output.add(root.data);
+            }
+            return output;
+        }else{
+            output = getPath(root.right,data);
+            if(output != null){
+                output.add(root.data);
+            }
+            return output;
+        }
     }
 }
 
