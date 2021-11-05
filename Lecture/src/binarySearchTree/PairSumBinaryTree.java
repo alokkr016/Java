@@ -2,6 +2,8 @@ package binarySearchTree;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /*
 Given a binary tree and an integer S,
@@ -9,7 +11,47 @@ print all the pair of nodes whose sum equals S.
  */
 public class PairSumBinaryTree {
     static void pairSum(BinaryTreeNode<Integer> root, int sum) {
+        ArrayList<Integer> array = toArray(root);
+        int j = array.size() - 1;
+        Collections.sort(array);
 
+
+        int count = array.size();
+        int i = 0;
+
+        while (count > 0) {
+            if(i == j){
+                break;
+            }
+            if (array.get(i) + array.get(j) == sum) {
+                System.out.println(array.get(i) + " " + array.get(j));
+                i++;
+                j--;
+                count -= 2;
+            }
+            if (array.get(i) + array.get(j) < sum) {
+                i++;
+                count -= 1;
+            } else if (array.get(i) + array.get(j) > sum) {
+                j--;
+                count -= 1;
+            }
+        }
+    }
+
+    public static ArrayList<Integer> toArray(BinaryTreeNode<Integer> root) {
+        ArrayList<Integer> result = new ArrayList<>();
+        toArrayHelp(root, result);
+        return result;
+    }
+
+    private static void toArrayHelp(BinaryTreeNode<Integer> root, ArrayList<Integer> result) {
+        if (root == null) {
+            return;
+        }
+        toArrayHelp(root.left, result);
+        result.add(root.data);
+        toArrayHelp(root.right, result);
     }
 
 }

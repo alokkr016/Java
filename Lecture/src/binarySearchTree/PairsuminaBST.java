@@ -3,14 +3,53 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 /*
 Given a binary search tree and an integer S, find pair of nodes in the BST which sum to S. You can use extra space of the order of O(log n).
  */
 public class PairsuminaBST {
-    public static void printNodesSumToS(BinaryTreeNode<Integer> root, int s) {
-        // Write your code here
+    public static void printNodesSumToS(BinaryTreeNode<Integer> root, int sum) {
 
+        ArrayList<Integer> array = toArray(root);
+        int j = array.size() - 1;
+
+        int count = array.size();
+        int i = 0;
+
+        while (count > 0) {
+            if(i == j){
+                break;
+            }
+            if (array.get(i) + array.get(j) == sum) {
+                System.out.println(array.get(i) + " " + array.get(j));
+                i++;
+                j--;
+                count -= 2;
+            }
+            if (array.get(i) + array.get(j) < sum) {
+                i++;
+                count -= 1;
+            } else if (array.get(i) + array.get(j) > sum) {
+                j--;
+                count -= 1;
+            }
+        }
+    }
+
+    public static ArrayList<Integer> toArray(BinaryTreeNode<Integer> root) {
+        ArrayList<Integer> result = new ArrayList<>();
+        toArrayHelp(root, result);
+        return result;
+    }
+
+    private static void toArrayHelp(BinaryTreeNode<Integer> root, ArrayList<Integer> result) {
+        if (root == null) {
+            return;
+        }
+        toArrayHelp(root.left, result);
+        result.add(root.data);
+        toArrayHelp(root.right, result);
     }
 
 }
