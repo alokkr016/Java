@@ -19,7 +19,7 @@ class TrieNode{
 public class Trie2 {
 
     private TrieNode root;
-    public int count;
+    private int numWords;
     public Trie2() {
         root = new TrieNode('\0');
     }
@@ -42,6 +42,7 @@ public class Trie2 {
 
     public void add(String word){
         add(root, word);
+        numWords++;
     }
 
     private boolean search(TrieNode root,String word){
@@ -102,13 +103,22 @@ public class Trie2 {
 
     public void delete(String word){
         delete(root,word);
+        numWords--;
+    }
+
+    public int countWords() {
+        // Write your code here
+        return numWords;
     }
 
     public static void main(String[] args) {
         Trie2 trie = new Trie2();
         trie.add("alok");
+        trie.add("kumar");
+        System.out.println(trie.numWords);
         System.out.println(trie.search("alok"));
         trie.delete("alok");
+        System.out.println(trie.numWords);
         System.out.println(trie.search("alok"));
     }
 }
