@@ -34,7 +34,7 @@ public class PrimsAlgorithm {
             int vertex = findMinimumWeight(weight,visited);
             visited[vertex] = true;
             for (int j = 0;j < v;j++) {
-                if(adjacencyMatrix[vertex][j] != 0 && !visited[i]){
+                if(adjacencyMatrix[vertex][j] != 0 && !visited[j]){
                     if(adjacencyMatrix[vertex][j] < weight[j]){
                         weight[j] = adjacencyMatrix[vertex][j];
                         parent[j] = vertex;
