@@ -46,13 +46,17 @@ public class KruskalAlgorithm {
             i++;
         }
 
-        for (int j = 0;j < n - 1;j++){
-            System.out.println(output[j].source + " " + output[j].destination + " " + output[j].weight);
+        for (int j = 0;j < n - 1;j++) {
+            if (output[j].source < output[j].destination) {
+                System.out.println(output[j].source + " " + output[j].destination + " " + output[j].weight);
+            } else {
+                System.out.println(output[j].destination + " " + output[j].source + " " + output[j].weight);
+            }
         }
     }
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int N = in.nextInt();
+        int v = in.nextInt();
         int E = in.nextInt();
 
         Edge []input = new Edge[E];
@@ -63,6 +67,6 @@ public class KruskalAlgorithm {
             input[i].weight = in.nextInt();
         }
 
-        kruskal(input,N);
+        kruskal(input,v);
     }
 }
